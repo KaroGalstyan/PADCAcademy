@@ -1,0 +1,51 @@
+{
+  "home": {
+    "title": "Find your Course & make sure goal.",
+    "subtitle": "Your dream Courses is waiting for you.",
+    "get_started": "Get Started",
+    "about_title": "ABOUT",
+    "about_text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ut auctor enim...",
+    "read_more": "Read More",
+    "courses_title": "COURSES",
+    "courses_subtitle": "Our education sistem will give you the perfect solution",
+    "success_stories_title": "OUR SUCCESS STORIES",
+    "success_stories_text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ut auctor enim. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque efficitur eu ex non blandit.",
+    "pricing_title": "Pricing",
+    "pricing_text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ut auctor enim. Interdum et malesuada fames ac ante ipsum primis in faucibus.",
+    "get_in_touch": "GET IN TOUCH",
+    "menu": "Menu",
+    "menu_items": {
+      "home": "Home",
+      "about": "About",
+      "stories": "Success stories",
+      "courses": "Courses",
+      "contact": "Contact"
+    },
+    "contact": {
+      "chat": {
+        "title": "Chat to support",
+        "desc": "We are here to help.",
+        "action": "support@untitledui.com"
+      },
+      "visit": {
+        "title": "Visit us",
+        "desc": "Visit our office.",
+        "action": "View on Google Maps"
+      },
+      "call": {
+        "title": "Call us",
+        "desc": "Mon-Fri from 10:30am to 6:30pm.",
+        "action": "+(374)94-019-941"
+      }
+    },
+    "footer": {
+      "headline": "Find your Course & make sure goal.",
+      "subtext": "Your dream Courses is waiting for you.",
+      "get_in_touch": "Get in touch",
+      "email": "support@untitledui.com",
+      "phone": "+(374)94-019-941",
+      "follow_us": "Follow us",
+      "copyright": "© 2023 PADC LLC All Rights Reserved"
+    }
+  }
+}

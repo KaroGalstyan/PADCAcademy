@@ -1,0 +1,51 @@
+{
+  "home": {
+    "title": "Найди свой курс и добейся цели.",
+    "subtitle": "Твой идеальный курс уже ждёт тебя.",
+    "get_started": "Начать",
+    "about_title": "О НАС",
+    "about_text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ut auctor enim...",
+    "read_more": "Читать далее",
+    "courses_title": "КУРСЫ",
+    "courses_subtitle": "Наша образовательная система — это идеальное решение",
+    "success_stories_title": "ИСТОРИИ УСПЕХА",
+    "success_stories_text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ut auctor enim. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque efficitur eu ex non blandit.",
+    "pricing_title": "Цены",
+    "pricing_text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ut auctor enim. Interdum et malesuada fames ac ante ipsum primis in faucibus.",
+    "get_in_touch": "СВЯЖИТЕСЬ С НАМИ",
+    "menu": "Меню",
+    "menu_items": {
+      "home": "Главная",
+      "about": "О нас",
+      "stories": "Истории успеха",
+      "courses": "Курсы",
+      "contact": "Контакты"
+    },
+    "contact": {
+      "chat": {
+        "title": "Чат с поддержкой",
+        "desc": "Мы здесь, чтобы помочь.",
+        "action": "support@untitledui.com"
+      },
+      "visit": {
+        "title": "Посетите нас",
+        "desc": "Наш офис.",
+        "action": "Открыть в Google Картах"
+      },
+      "call": {
+        "title": "Позвоните нам",
+        "desc": "Пн-Пт с 10:30 до 18:30.",
+        "action": "+(374)94-019-941"
+      }
+    },
+    "footer": {
+      "headline": "Найди свой курс и добейся цели.",
+      "subtext": "Твой идеальный курс уже ждёт тебя.",
+      "get_in_touch": "Связаться с нами",
+      "email": "support@untitledui.com",
+      "phone": "+(374)94-019-941",
+      "follow_us": "Подписывайтесь на нас",
+      "copyright": "© 2023 PADC LLC Все права защищены"
+    }
+  }
+}
