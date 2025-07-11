@@ -1,16 +1,13 @@
 import axios from "axios";
+import useAuthStore from "@/app/store/authStore";
 
-const api = axios.create({ baseURL: "https://dev.api.academy.padcllc.com/v1" });
-
-let accessToken: string | null = null;
-
-export const setAccessToken = (token: string | null) => {
-  accessToken = token;
-};
+const api = axios.create({ baseURL: process.env.EXPO_PUBLIC_API_URL });
 
 api.interceptors.request.use((config) => {
-  if (accessToken) {
-    config.headers.Authorization = `Bearer ${accessToken}`;
+  const token = useAuthStore.getState().accessToken;
+
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
   }
   return config;
 });

@@ -13,17 +13,17 @@ const useCountries = () => {
 
   useEffect(() => {
     setLoading(true);
-    api.get('/countries')
-      .then(response => {
+    api
+      .get("/countries")
+      .then((response) => {
         const data = response.data.map((c: any) => ({
           id: c.id,
           name: c.name,
         }));
         setCountries(data);
-		
       })
-      .catch(err => {
-        setError(err.message || 'Failed to fetch countries');
+      .catch((err) => {
+        setError(err.message || "Failed to fetch countries");
       })
       .finally(() => setLoading(false));
   }, []);
@@ -31,4 +31,4 @@ const useCountries = () => {
   return { countries, loading, error };
 };
 
-export default useCountries
+export default useCountries;

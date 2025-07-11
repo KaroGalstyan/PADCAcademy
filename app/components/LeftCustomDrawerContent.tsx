@@ -4,25 +4,15 @@ import { DrawerContentScrollView } from "@react-navigation/drawer";
 import { DrawerActions } from "@react-navigation/native";
 import useAuthStore from "@/app/store/authStore";
 
-const menuItems = [
+const leftMenuItems = [
   {
     label: "Home",
     icon: require("../../assets/images/drawer-home.png"),
-    route: "HomeScreen",
-  },
-  {
-    label: "About",
-    icon: require("../../assets/images/drawer-about.png"),
-    route: "About",
-  },
-  {
-    label: "Courses",
-    icon: require("../../assets/images/drawer-courses.png"),
-    route: "Courses",
+    route: "Students",
   },
 ];
 
-export default function CustomDrawerContent(props: any) {
+export default function CustomDrawerLeft(props: any) {
   const { navigation } = props;
   const { accessToken, clearTokens } = useAuthStore();
 
@@ -39,7 +29,7 @@ export default function CustomDrawerContent(props: any) {
 
   return (
     <DrawerContentScrollView {...props} contentContainerStyle={{ flex: 1 }}>
-      <View className="flex-row justify-end items-center p-4">
+      <View className="flex-row justify-start items-center p-4">
         <TouchableOpacity onPress={() => navigation.dispatch(DrawerActions.closeDrawer())}>
           <Image
             source={require("../../assets/images/open-menu.png")}
@@ -50,7 +40,7 @@ export default function CustomDrawerContent(props: any) {
       </View>
 
       <View className="flex-1 px-2">
-        {menuItems.map((item) => (
+        {leftMenuItems.map((item) => (
           <TouchableOpacity
             key={item.route}
             onPress={() => navigation.navigate(item.route)}
@@ -67,7 +57,7 @@ export default function CustomDrawerContent(props: any) {
         {accessToken ? (
           <TouchableOpacity onPress={handleLogout} className="flex-row items-center">
             <Image
-              source={require("../../assets/images/drawer-home.png")} // Poxel logouti nkari
+              source={require("../../assets/images/drawer-home.png")}
               className="w-6 h-6 mr-4"
               resizeMode="contain"
             />
@@ -76,7 +66,7 @@ export default function CustomDrawerContent(props: any) {
         ) : (
           <TouchableOpacity onPress={handleLogin} className="flex-row items-center">
             <Image
-              source={require("../../assets/images/drawer-courses.png")} // Poxel logini nkari
+              source={require("../../assets/images/drawer-courses.png")}
               className="w-6 h-6 mr-4"
               resizeMode="contain"
             />
