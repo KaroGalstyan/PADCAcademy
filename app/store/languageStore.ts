@@ -1,12 +1,7 @@
 import { create } from "zustand";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import Constants from "expo-constants";
-
-type LanguageState = {
-  language: string;
-  setLanguage: (lang: string) => Promise<void>;
-  loadLanguage: () => Promise<void>;
-};
+import { LanguageState } from "../interfaces";
 
 const LANGUAGE_KEY = "appLanguage";
 

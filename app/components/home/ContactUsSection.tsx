@@ -1,32 +1,6 @@
+import { ContactItem } from "@/app/interfaces";
 import React from "react";
 import { View, Text, Image, TouchableOpacity, Linking } from "react-native";
-
-type ContactItem =
-  | {
-      id: string;
-      type: "support";
-      icon: any;
-      title: string;
-      description: string;
-      email: string;
-    }
-  | {
-      id: string;
-      type: "location";
-      icon: any;
-      title: string;
-      description: string;
-      email: string;
-      location: string;
-    }
-  | {
-      id: string;
-      type: "phone";
-      icon: any;
-      title: string;
-      description: string;
-      email: string;
-    };
 
 const contactUs: ContactItem[] = [
   {
@@ -58,6 +32,7 @@ const contactUs: ContactItem[] = [
 
 const ContactUsSection = () => {
   const handlePress = (item: ContactItem) => {
+    // if (item.title === 'Visit us' && item.location) bad condition.... Spes?
     switch (item.type) {
       case "location":
         const url = `https://www.google.com/maps?q=${encodeURIComponent(item.location)}`;

@@ -111,7 +111,7 @@ const Login = () => {
               <Text className="text-black text-[14px]">Remember me</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate("Home")}>
               <Text className="text-[#4D7BC1] text-[14px]">Forgot your password?</Text>
             </TouchableOpacity>
           </View>

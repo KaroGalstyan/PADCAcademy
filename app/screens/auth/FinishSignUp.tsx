@@ -65,12 +65,9 @@ const FinishSignUp = () => {
     minute: "2-digit",
   });
   const courseType = data?.test?.courseType || "N/A";
-
   const handleFinish = async () => {
     try {
-      // console.log('Sending registration data:', JSON.stringify(data, null, 2));
       await api.post("/auth/registration", data);
-      // console.log(response);
 
       setShowModal(true);
     } catch (error) {

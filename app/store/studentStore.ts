@@ -1,13 +1,5 @@
 import { create } from "zustand";
-
-type Student = {
-  fullName: string;
-};
-
-type StudentStore = {
-  student: Student | null;
-  setStudent: (student: Student) => void;
-};
+import { StudentStore } from "../interfaces";
 
 const useStudentStore = create<StudentStore>((set) => ({
   student: null,

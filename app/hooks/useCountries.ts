@@ -1,10 +1,6 @@
 import { useEffect, useState } from "react";
 import api from "../services/apiPublic";
-
-type Country = {
-  id: number;
-  name: string;
-};
+import { Country } from "../interfaces";
 
 const useCountries = () => {
   const [countries, setCountries] = useState<Country[]>([]);
@@ -16,7 +12,7 @@ const useCountries = () => {
     api
       .get("/countries")
       .then((response) => {
-        const data = response.data.map((c: any) => ({
+        const data = response.data.map((c: Country) => ({
           id: c.id,
           name: c.name,
         }));

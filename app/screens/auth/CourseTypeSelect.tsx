@@ -5,19 +5,14 @@ import useSignUpStore from "@/app/store/useSignUpStore";
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { RootStackParamList } from "@/app/navigation";
-import type { ICourseType } from "@/app/interfaces/";
+import type { ICourseType, Options } from "@/app/interfaces/";
 
 type CourseTypeSelectScreenNavigationProp = NativeStackNavigationProp<
   RootStackParamList,
   "CourseTypeSelect"
 >;
 
-const options: {
-  key: ICourseType;
-  title: string;
-  icon: any;
-  points: string[];
-}[] = [
+const options: Options[] = [
   {
     key: "online",
     title: "Online",
@@ -33,7 +28,7 @@ const options: {
   {
     key: "offline",
     title: "Offline",
-    icon: require("../../../assets/images/online-icon.png"), // Offline-i nkar@ ???????
+    icon: require("../../../assets/images/online-icon.png"),
     points: [
       "Convenient",
       "Health issues",

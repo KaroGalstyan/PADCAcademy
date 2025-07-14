@@ -1,6 +1,6 @@
 import React from "react";
 import { View, TouchableOpacity, Image, Text } from "react-native";
-import { DrawerContentScrollView } from "@react-navigation/drawer";
+import { DrawerContentComponentProps, DrawerContentScrollView } from "@react-navigation/drawer";
 import { DrawerActions } from "@react-navigation/native";
 import useAuthStore from "@/app/store/authStore";
 
@@ -12,7 +12,7 @@ const leftMenuItems = [
   },
 ];
 
-export default function CustomDrawerLeft(props: any) {
+export default function CustomDrawerLeft(props: DrawerContentComponentProps) {
   const { navigation } = props;
   const { accessToken, clearTokens } = useAuthStore();
 

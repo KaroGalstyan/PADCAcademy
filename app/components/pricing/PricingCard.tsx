@@ -2,19 +2,7 @@ import React from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
-
-type PricingCardProps = {
-  item: {
-    title: string;
-    price: string;
-    time: string;
-    features: string[];
-    bg: string;
-    border: string;
-    type: "gradient" | "outlined";
-  };
-  onPress: () => void;
-};
+import { PricingCardProps } from "@/app/interfaces";
 
 const PricingCard: React.FC<PricingCardProps> = ({ item, onPress }) => {
   return (
@@ -28,9 +16,7 @@ const PricingCard: React.FC<PricingCardProps> = ({ item, onPress }) => {
     >
       <View className="flex-1 justify-between">
         <View className="items-center">
-          <Text className="text-[20px] font-bold text-black mb-[20px]">
-            {item.title}
-          </Text>
+          <Text className="text-[20px] font-bold text-black mb-[20px]">{item.title}</Text>
 
           <View className="flex-row items-baseline mb-[40px]">
             <Text className="text-base font-bold align-top">$</Text>

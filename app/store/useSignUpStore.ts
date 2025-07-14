@@ -1,25 +1,5 @@
 import { create } from "zustand";
-
-type SignUpFormValues = {
-  fullName: string;
-  email: string;
-  phone: string;
-  university: string;
-  faculty: string;
-  occupation: string;
-  countryId: number;
-  city: string;
-  englishLevel: string;
-  test?: {
-    courseType?: "online" | "offline";
-    date?: string;
-  };
-};
-
-type SignUpStore = {
-  data: SignUpFormValues;
-  setSignUpData: (data: Partial<SignUpFormValues>) => void;
-};
+import { SignUpStore } from "../interfaces";
 
 const useSignUpStore = create<SignUpStore>((set) => ({
   data: {

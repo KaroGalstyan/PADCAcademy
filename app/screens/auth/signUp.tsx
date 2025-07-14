@@ -22,6 +22,13 @@ const SignUp = () => {
     formState: { errors },
   } = useForm<ISignUpPayload>();
   const [isEnglishDropdownOpen, setIsEnglishDropdownOpen] = useState(false);
+  const [isOccupationDropdownOpen, setIsOccupationDropdownOpen] = useState(false);
+  const { countries, loading } = useCountries();
+  const [isCountryDropdownOpen, setIsCountryDropdownOpen] = useState(false);
+  const { setSignUpData } = useSignUpStore();
+
+  const occupations = ["student", "employee", "other"];
+
   const levels = [
     "A1 (Elementary)",
     "A2 (Pre Intermediate)",
@@ -30,11 +37,6 @@ const SignUp = () => {
     "C1 (Advanced)",
     "C2 (Proficient)",
   ];
-  const [isOccupationDropdownOpen, setIsOccupationDropdownOpen] = useState(false);
-  const occupations = ["student", "employee", "other"];
-  const { countries, loading } = useCountries();
-  const [isCountryDropdownOpen, setIsCountryDropdownOpen] = useState(false);
-  const { setSignUpData } = useSignUpStore();
 
   const onSubmit = async (formData: ISignUpPayload) => {
     try {

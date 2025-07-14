@@ -2,32 +2,13 @@ import React, { useState, useLayoutEffect } from "react";
 import { View, Text, ScrollView, TouchableOpacity } from "react-native";
 import { useRoute, useNavigation } from "@react-navigation/native";
 import { Ionicons } from "@expo/vector-icons";
-
-type Chapter = {
-  name: string;
-  tasks: { title: string }[];
-  lectures: { title: string }[];
-  miniProjects: { title: string }[];
-};
-
-type Subject = {
-  name: string;
-  chapters: Chapter[];
-  lecturer?: { fullName: string };
-};
-
-type Direction = {
-  name: string;
-  shortDescription: string;
-  lecturer?: { fullName: string };
-  subjects: Subject[];
-};
+import { DirectionDetails } from "@/app/interfaces";
 
 const SubjectDetails = () => {
   const navigation = useNavigation();
   const route = useRoute();
   const { direction, studentFullName } = route.params as {
-    direction: Direction;
+    direction: DirectionDetails;
     studentFullName: string;
   };
 

@@ -1,10 +1,6 @@
 import { useEffect, useState } from "react";
 import api from "@/app/services/apiPublic";
-
-interface Country {
-  id: number;
-  name: string;
-}
+import { Country } from "../interfaces";
 
 const useCountryById = (id: number | null) => {
   const [country, setCountry] = useState<Country | null>(null);

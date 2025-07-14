@@ -1,14 +1,15 @@
 import React from "react";
 import { View, TouchableOpacity, Image, Text } from "react-native";
-import { DrawerContentScrollView } from "@react-navigation/drawer";
+import { DrawerContentComponentProps, DrawerContentScrollView } from "@react-navigation/drawer";
 import { DrawerActions } from "@react-navigation/native";
 import useAuthStore from "@/app/store/authStore";
+import { IMenuItem } from "../interfaces";
 
-const menuItems = [
+const menuItems: IMenuItem[] = [
   {
     label: "Home",
     icon: require("../../assets/images/drawer-home.png"),
-    route: "HomeScreen",
+    route: "Home",
   },
   {
     label: "About",
@@ -22,7 +23,7 @@ const menuItems = [
   },
 ];
 
-export default function CustomDrawerContent(props: any) {
+export default function CustomDrawerContent(props: DrawerContentComponentProps) {
   const { navigation } = props;
   const { accessToken, clearTokens } = useAuthStore();
 
@@ -67,7 +68,7 @@ export default function CustomDrawerContent(props: any) {
         {accessToken ? (
           <TouchableOpacity onPress={handleLogout} className="flex-row items-center">
             <Image
-              source={require("../../assets/images/drawer-home.png")} // Poxel logouti nkari
+              source={require("../../assets/images/drawer-home.png")}
               className="w-6 h-6 mr-4"
               resizeMode="contain"
             />
@@ -76,7 +77,7 @@ export default function CustomDrawerContent(props: any) {
         ) : (
           <TouchableOpacity onPress={handleLogin} className="flex-row items-center">
             <Image
-              source={require("../../assets/images/drawer-courses.png")} // Poxel logini nkari
+              source={require("../../assets/images/drawer-courses.png")}
               className="w-6 h-6 mr-4"
               resizeMode="contain"
             />

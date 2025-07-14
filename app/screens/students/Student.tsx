@@ -15,33 +15,9 @@ import api from "@/app/services/apiPrivate";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { RootStackParamList } from "@/app/navigation";
 import useStudentStore from "@/app/store/studentStore";
+import { Direction, DirectionWrapper, Student, Subject } from "@/app/interfaces";
 
 type StudentsScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, "Students">;
-
-type Lecturer = { fullName: string };
-type Chapter = {
-  tasks: any[];
-  miniProjects: any[];
-  lectures: any[];
-};
-type Subject = {
-  chapters: Chapter[];
-  lecturer?: Lecturer;
-  name: string;
-};
-export type Direction = {
-  name: string;
-  completedTaskCount: number;
-  totalTaskCount: number;
-  shortDescription: string;
-  subjects: Subject[];
-  lecturer?: Lecturer;
-};
-type DirectionWrapper = { direction: Direction };
-type Student = {
-  fullName: string;
-  directions: DirectionWrapper[];
-};
 
 const Students = () => {
   const navigation = useNavigation<StudentsScreenNavigationProp>();
@@ -54,23 +30,11 @@ const Students = () => {
       .get("/students")
       .then((res) => {
         setStudent(res.data);
-        setStudentStore({ fullName: res.data.fullName }); // <== вот это добавь
+        setStudentStore({ fullName: res.data.fullName });
       })
       .catch(console.error)
       .finally(() => setLoading(false));
   }, [setStudentStore]);
-
-  // const getInitials = (fullName: string) => {
-  // 	const parts = fullName.split(' ');
-  // 	return parts.map((n) => n[0]).join('').toUpperCase();
-  // };
-
-  // const openDrawer = () => {
-  // 	const parent = navigation.getParent();
-  // 	if (parent?.getState().type === 'drawer') {
-  // 		parent.dispatch(DrawerActions.openDrawer());
-  // 	}
-  // };
 
   const calculateProgress = (direction: Direction) => {
     const { completedTaskCount, totalTaskCount } = direction;
@@ -116,7 +80,7 @@ const Students = () => {
         />
       </LinearGradient>
       <View className="px-5">
-        {student.directions.map((dirObj: any, idx: number) => {
+        {student.directions.map((dirObj: DirectionWrapper, idx: number) => {
           const dir = dirObj.direction;
           const subject: Subject = dir.subjects[0];
           const progress = calculateProgress(dir);
