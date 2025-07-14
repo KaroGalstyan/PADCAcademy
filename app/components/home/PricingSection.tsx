@@ -1,42 +1,7 @@
 import React from "react";
 import { View, Text } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-
-const priceList = [
-  {
-    title: "Basic Plan",
-    price: "50",
-    time: "/1mo",
-    features: ["Lorem ipsum dolor sit amet", "Lorem ipsum dolor sit amet"],
-    bg: "rgba(161, 159, 219, 0.1)",
-    border: "transparent",
-  },
-  {
-    title: "Pro Plan",
-    price: "99",
-    time: "/1year",
-    features: [
-      "Lorem ipsum dolor sit amet",
-      "Lorem ipsum dolor sit amet",
-      "Lorem ipsum dolor sit amet",
-    ],
-    bg: "#FFFFFF",
-    border: "#A19FDB",
-  },
-  {
-    title: "Enterprise Plan",
-    price: "199",
-    time: "/week",
-    features: [
-      "Lorem ipsum dolor sit amet",
-      "Lorem ipsum dolor sit amet",
-      "Lorem ipsum dolor sit amet",
-      "Lorem ipsum dolor sit amet",
-    ],
-    bg: "rgba(161, 159, 219, 0.1)",
-    border: "transparent",
-  },
-];
+import { priceList } from "@/app/utils/home";
 
 const PricingSection = () => {
   return (

@@ -1,34 +1,7 @@
-import { ContactItem } from "@/app/interfaces";
 import React from "react";
 import { View, Text, Image, TouchableOpacity, Linking } from "react-native";
-
-const contactUs: ContactItem[] = [
-  {
-    id: "1",
-    type: "support",
-    icon: require("../../../assets/images/support.png"),
-    title: "Chat to support",
-    description: "We are here to help.",
-    email: "support@untitledui.com",
-  },
-  {
-    id: "2",
-    type: "location",
-    icon: require("../../../assets/images/visit-us.png"),
-    title: "Visit us",
-    description: "Visit our office.",
-    email: "View on Google Maps",
-    location: "40.7989655,43.8431837",
-  },
-  {
-    id: "3",
-    type: "phone",
-    icon: require("../../../assets/images/call-us.png"),
-    title: "Call us",
-    description: "Mon-Fri from 10:30am to 6:30pm.",
-    email: "+(374)94-019-941",
-  },
-];
+import { contactUs } from "@/app/utils/home";
+import { ContactItem } from "@/app/interfaces";
 
 const ContactUsSection = () => {
   const handlePress = (item: ContactItem) => {

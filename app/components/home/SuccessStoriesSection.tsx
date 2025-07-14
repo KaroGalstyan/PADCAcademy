@@ -1,3 +1,4 @@
+import { people } from "@/app/utils/home";
 import React, { useRef } from "react";
 import { View, Text, ScrollView, Image, Dimensions } from "react-native";
 
@@ -5,21 +6,6 @@ const { width: screenWidth } = Dimensions.get("window");
 const CARD_WIDTH = screenWidth * 0.61;
 const CARD_MARGIN = 10;
 const VISIBLE_NEXT_CARD = screenWidth * 0.33;
-
-const people = [
-  {
-    id: 1,
-    photo: require("../../../assets/images/y.png"),
-  },
-  {
-    id: 2,
-    photo: require("../../../assets/images/y.png"),
-  },
-  {
-    id: 3,
-    photo: require("../../../assets/images/y.png"),
-  },
-];
 
 const SuccessStoriesSection = () => {
   const scrollRef = useRef<ScrollView>(null);

@@ -1,43 +1,6 @@
+import { coursesData } from "@/app/utils/home";
 import React from "react";
 import { View, Text, FlatList, Image } from "react-native";
-
-const coursesData = [
-  {
-    id: "1",
-    title: "Software Engineering",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ut auctor enim. Interdum et malesuada fames ac ante ipsum primis in faucibus.",
-    image: require("../../../assets/images/soft-eng.png"),
-  },
-  {
-    id: "2",
-    title: "Front-End Development",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ut auctor enim. Interdum et malesuada fames ac ante ipsum primis in faucibus.",
-    image: require("../../../assets/images/front-end.png"),
-  },
-  {
-    id: "3",
-    title: "Back-End Development",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ut auctor enim. Interdum et malesuada fames ac ante ipsum primis in faucibus.",
-    image: require("../../../assets/images/back-end.png"),
-  },
-  {
-    id: "4",
-    title: "Automated Quality Assurance (AQA)",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ut auctor enim. Interdum et malesuada fames ac ante ipsum primis in faucibus.",
-    image: require("../../../assets/images/aqa.png"),
-  },
-  {
-    id: "5",
-    title: "DevOps Engineering",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ut auctor enim. Interdum et malesuada fames ac ante ipsum primis in faucibus.",
-    image: require("../../../assets/images/devops.png"),
-  },
-];
 
 const CoursesSection = () => {
   return (

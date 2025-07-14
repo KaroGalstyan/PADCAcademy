@@ -5,39 +5,13 @@ import useSignUpStore from "@/app/store/useSignUpStore";
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { RootStackParamList } from "@/app/navigation";
-import type { ICourseType, Options } from "@/app/interfaces/";
+import type { ICourseType } from "@/app/interfaces/";
+import { options } from "@/app/utils/auth";
 
 type CourseTypeSelectScreenNavigationProp = NativeStackNavigationProp<
   RootStackParamList,
   "CourseTypeSelect"
 >;
-
-const options: Options[] = [
-  {
-    key: "online",
-    title: "Online",
-    icon: require("../../../assets/images/online-icon.png"),
-    points: [
-      "Traditional Method",
-      "Requires lots of efforts",
-      "Strict Rules and Guidelines",
-      "Need to be Physically Present",
-      "Requires more Time and Money",
-    ],
-  },
-  {
-    key: "offline",
-    title: "Offline",
-    icon: require("../../../assets/images/online-icon.png"),
-    points: [
-      "Convenient",
-      "Health issues",
-      "Self-Paced Learning",
-      "Intence Requirement for Self-discipline",
-      "Must Fulfill Basic Requirements",
-    ],
-  },
-];
 
 const CourseTypeSelect = () => {
   const { setSignUpData } = useSignUpStore();

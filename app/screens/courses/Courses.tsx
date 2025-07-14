@@ -2,17 +2,10 @@ import React from "react";
 import { View, Text, ScrollView, TouchableOpacity, Image, SafeAreaView } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
+import { bulletPoints } from "@/app/utils/courses";
 
 const Courses = () => {
   const navigation = useNavigation();
-
-  const bulletPoints = [
-    "Create test plans for new software.",
-    "Identify project risks.",
-    "Recommend steps to address issues.",
-    "Implement software testing and evaluate results.",
-    "Document and report testing results regarding usability and functionality.",
-  ];
 
   return (
     <SafeAreaView className="flex-1 bg-[#F8F8FA]">

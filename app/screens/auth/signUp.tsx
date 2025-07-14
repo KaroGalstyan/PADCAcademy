@@ -11,6 +11,7 @@ import useCountries from "@/app/hooks/useCountries";
 import api from "@/app/services/apiPublic";
 import { AxiosError } from "axios";
 import type ISignUpPayload from "@/app/interfaces";
+import { levels, occupations } from "@/app/utils/auth";
 
 type SignUpScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, "SignUp">;
 
@@ -26,17 +27,6 @@ const SignUp = () => {
   const { countries, loading } = useCountries();
   const [isCountryDropdownOpen, setIsCountryDropdownOpen] = useState(false);
   const { setSignUpData } = useSignUpStore();
-
-  const occupations = ["student", "employee", "other"];
-
-  const levels = [
-    "A1 (Elementary)",
-    "A2 (Pre Intermediate)",
-    "B1 (Intermediate)",
-    "B2 (Upper Intermediate)",
-    "C1 (Advanced)",
-    "C2 (Proficient)",
-  ];
 
   const onSubmit = async (formData: ISignUpPayload) => {
     try {

@@ -4,7 +4,6 @@ import { DrawerActions } from "@react-navigation/native";
 import React from "react";
 import { Image, TouchableOpacity } from "react-native";
 import About from "../screens/about/About";
-
 import CustomDrawerContent from "../components/CustomDrawerContent";
 import CourseTypeSelect from "../screens/auth/CourseTypeSelect";
 import ExamScheduleSelect from "../screens/auth/ExamScheduleSelect";

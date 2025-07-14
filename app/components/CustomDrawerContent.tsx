@@ -35,7 +35,7 @@ export default function CustomDrawerContent(props: DrawerContentComponentProps) 
 
   const handleLogin = () => {
     navigation.closeDrawer();
-    navigation.navigate("Pricing");
+    navigation.navigate("Login");
   };
 
   return (
