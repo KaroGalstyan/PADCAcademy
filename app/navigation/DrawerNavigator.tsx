@@ -13,7 +13,7 @@ import SignUp from "../screens/auth/signUp";
 import Courses from "../screens/courses/Courses";
 import HomeScreen from "../screens/home/HomeScreen";
 import Pricing from "../screens/pricing/Pricing";
-import Students from "../screens/students/Student";
+// import Students from "../screens/students/Student";
 
 const Drawer = createDrawerNavigator();
 
@@ -62,8 +62,8 @@ export default function DrawerNavigator() {
       />
       <Drawer.Screen name="FinishSignUp" component={FinishSignUp} options={{ headerShown: true }} />
       <Drawer.Screen name="Login" component={Login} options={{ headerShown: true }} />
-      <Drawer.Screen name="Pricing" component={Pricing} options={{ headerShown: true }} />
-      <Drawer.Screen name="Students" component={Students} options={{ headerShown: false }} />
+      <Drawer.Screen name="Pricing" component={Pricing} options={{ headerShown: false }} />
+      {/* <Drawer.Screen name="Students" component={Students} options={{ headerShown: false }} /> */}
     </Drawer.Navigator>
   );
 }

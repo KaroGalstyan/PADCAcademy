@@ -1,102 +1,88 @@
+import { ImageSourcePropType } from "react-native";
+
 export type OccupationType = "student" | "employee" | "other";
+export type CourseType = "online" | "offline";
+export type EnglishLevelType =
+  | "A1 (Elementary)"
+  | "A2 (Pre Intermediate)"
+  | "B1 (Intermediate)"
+  | "B2 (Upper Intermediate)"
+  | "C1 (Advanced)"
+  | "C2 (Proficient)";
 
-export type ICourseType = "online" | "offline";
-
-export type Country = {
+export interface ICountry {
   id: number;
   name: string;
+}
+
+export type IChapterItem = {
+  title: string;
 };
 
-type Lecturer = { fullName: string };
-
-type Chapter = {
-  tasks: { fullName: string }[];
-  miniProjects: { fullName: string }[];
-  lectures: Lecturer[];
-};
-
-export type Subject = {
-  chapters: Chapter[];
-  lecturer?: Lecturer;
+export interface IChapter {
   name: string;
-};
+  tasks: IChapterItem[];
+  miniProjects: IChapterItem[];
+  lectures: IChapterItem[];
+}
 
-export type Direction = {
+export interface ISubject {
   name: string;
+  chapters: IChapter[];
+  lecturer?: {
+    fullName: string;
+  };
+}
+
+export interface IDirection {
+  name: string;
+  shortDescription: string;
   completedTaskCount: number;
   totalTaskCount: number;
-  shortDescription: string;
-  subjects: Subject[];
-  lecturer?: Lecturer;
-};
+  subjects: ISubject[];
+  lecturer?: {
+    fullName: string;
+  };
+}
 
-export type DirectionWrapper = { direction: Direction };
-
-export type Student = {
+export interface IStudent {
   fullName: string;
-  directions: DirectionWrapper[];
-};
+  directions: { direction: IDirection }[];
+}
 
-export type StudentFStore = {
-  fullName: string;
-};
+export interface IStudentStore {
+  student: Pick<IStudent, "fullName"> | null;
+  setStudent: (student: Pick<IStudent, "fullName">) => void;
+}
 
-export type StudentStore = {
-  student: StudentFStore | null;
-  setStudent: (student: StudentFStore) => void;
-};
+export interface IContactItemBase {
+  id: string;
+  icon: ImageSourcePropType;
+  title: string;
+  description: string;
+}
 
-export type ChapterDetails = {
-  name: string;
-  tasks: { title: string }[];
-  lectures: { title: string }[];
-  miniProjects: { title: string }[];
-};
+export interface IContactSupport extends IContactItemBase {
+  type: "support";
+  email: string;
+}
 
-export type SubjectDetails = {
-  name: string;
-  chapters: ChapterDetails[];
-  lecturer?: { fullName: string };
-};
+export interface IContactPhone extends IContactItemBase {
+  type: "phone";
+  phone: string;
+}
 
-export type DirectionDetails = {
-  name: string;
-  shortDescription: string;
-  lecturer?: { fullName: string };
-  subjects: SubjectDetails[];
-};
+export interface IContactLocation extends IContactItemBase {
+  type: "location";
+  location: string;
+}
 
-export type ContactItem =
-  | {
-      id: string;
-      type: "support";
-      icon: any;
-      title: string;
-      description: string;
-      email: string;
-    }
-  | {
-      id: string;
-      type: "location";
-      icon: any;
-      title: string;
-      description: string;
-      email: string;
-      location: string;
-    }
-  | {
-      id: string;
-      type: "phone";
-      icon: any;
-      title: string;
-      description: string;
-      email: string;
-    };
+export type ContactItem = IContactSupport | IContactPhone | IContactLocation;
 
-export type PaymentModalProps = {
+export interface IPaymentModalProps {
   visible: boolean;
   onClose: () => void;
-  countries: { id: string | number; name: string }[];
+  countries: ICountry[];
   loading: boolean;
   error: string | null;
   selectedCountry: string;
@@ -110,60 +96,67 @@ export type PaymentModalProps = {
   formatCardNumber: (text: string) => string;
   formatExpiration: (text: string) => string;
   onConfirm: () => void;
-};
+}
 
-export type PricingCardProps = {
-  item: {
-    title: string;
-    price: string;
-    time: string;
-    features: string[];
-    bg: string;
-    border: string;
-    type: "gradient" | "outlined";
-  };
+export interface IPricingCard {
+  title: string;
+  price: string;
+  time: string;
+  features: string[];
+  bg: string;
+  border: string;
+  type: "gradient" | "outlined";
+}
+
+export interface IPricingCardProps {
+  item: IPricingCard;
   onPress: () => void;
-};
+}
 
-export type PricingListProps = {
-  priceList: {
-    title: string;
-    price: string;
-    time: string;
-    features: string[];
-    bg: string;
-    border: string;
-    type: "gradient" | "outlined";
-  }[];
+export interface IPricingListProps {
+  priceList: IPricingCard[];
   onGetStarted: () => void;
-};
+}
 
-export type LanguageState = {
+export interface ILanguageState {
   language: string;
   setLanguage: (lang: string) => Promise<void>;
   loadLanguage: () => Promise<void>;
-};
+}
 
-type SignUpFormValues = {
+export interface ISignUpFormValues {
   fullName: string;
   email: string;
   phone: string;
   university: string;
   faculty: string;
-  occupation: string;
+  occupation: OccupationType;
   countryId: number;
   city: string;
-  englishLevel: string;
+  englishLevel: EnglishLevelType;
   test?: {
-    courseType?: "online" | "offline";
+    courseType?: CourseType;
     date?: string;
   };
-};
+}
 
-export type SignUpStore = {
-  data: SignUpFormValues;
-  setSignUpData: (data: Partial<SignUpFormValues>) => void;
-};
+export interface ISignUpStore {
+  data: ISignUpFormValues;
+  setSignUpData: (data: Partial<ISignUpFormValues>) => void;
+}
+
+export interface IMenuItem {
+  label: string;
+  icon: number;
+  route: keyof RootDrawerParamList;
+}
+
+export interface ICourseOption {
+  key: CourseType;
+  title: string;
+  icon: ImageSourcePropType;
+  points: string[];
+}
 
 export type RootDrawerParamList = {
   AuthGate: undefined;
@@ -177,36 +170,10 @@ export type RootDrawerParamList = {
   Pricing: undefined;
   Students: undefined;
   Courses: undefined;
-  SubjectDetails: { direction: Direction; studentFullName: string };
+  SubjectDetails: {
+    direction: IDirection;
+    studentFullName: string;
+  };
 };
 
-export interface IMenuItem {
-  label: string;
-  icon: number;
-  route: keyof RootDrawerParamList;
-}
-
-export type Options = {
-  key: ICourseType;
-  title: string;
-  icon: any;
-  points: string[];
-};
-
-export default interface ISignUpPayload {
-  fullName: string;
-  email: string;
-  phone: string;
-  university: string;
-  faculty: string;
-  occupation: OccupationType;
-  countryId: number;
-  city: string;
-  englishLevel:
-    | "A1 (Elementary)"
-    | "A2 (Pre Intermediate)"
-    | "B1 (Intermediate)"
-    | "B2 (Upper Intermediate)"
-    | "C1 (Advanced)"
-    | "C2 (Proficient)";
-}
+export type ISignUpPayload = Omit<ISignUpFormValues, "test">;

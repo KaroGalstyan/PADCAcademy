@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import api from "@/app/services/apiPublic";
-import { Country } from "../interfaces";
+import { ICountry } from "../interfaces";
 
 const useCountryById = (id: number | null) => {
-  const [country, setCountry] = useState<Country | null>(null);
+  const [country, setCountry] = useState<ICountry | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 

@@ -1,7 +1,7 @@
 import { create } from "zustand";
-import { StudentStore } from "../interfaces";
+import { IStudentStore } from "../interfaces";
 
-const useStudentStore = create<StudentStore>((set) => ({
+const useStudentStore = create<IStudentStore>((set) => ({
   student: null,
   setStudent: (student) => set({ student }),
 }));

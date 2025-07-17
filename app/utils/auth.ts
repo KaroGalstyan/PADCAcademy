@@ -1,6 +1,6 @@
-import { Options } from "../interfaces";
+import { ICourseOption } from "../interfaces";
 
-export const options: Options[] = [
+export const options: ICourseOption[] = [
   {
     key: "online",
     title: "Online",

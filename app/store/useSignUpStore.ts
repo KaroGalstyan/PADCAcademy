@@ -1,17 +1,17 @@
 import { create } from "zustand";
-import { SignUpStore } from "../interfaces";
+import { ISignUpStore } from "../interfaces";
 
-const useSignUpStore = create<SignUpStore>((set) => ({
+const useSignUpStore = create<ISignUpStore>((set) => ({
   data: {
     fullName: "",
     email: "",
     phone: "",
     university: "",
     faculty: "",
-    occupation: "",
+    occupation: "student",
     countryId: 0,
     city: "",
-    englishLevel: "",
+    englishLevel: "A1 (Elementary)",
     test: {},
   },
   setSignUpData: (newData) =>

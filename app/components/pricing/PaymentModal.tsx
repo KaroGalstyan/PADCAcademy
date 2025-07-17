@@ -2,9 +2,9 @@ import React from "react";
 import { View, Text, Modal, TextInput, ActivityIndicator, Pressable } from "react-native";
 import { Picker } from "@react-native-picker/picker";
 import { LinearGradient } from "expo-linear-gradient";
-import { PaymentModalProps } from "@/app/interfaces";
+import { IPaymentModalProps } from "@/app/interfaces";
 
-const PaymentModal: React.FC<PaymentModalProps> = ({
+const PaymentModal: React.FC<IPaymentModalProps> = ({
   visible,
   onClose,
   countries,

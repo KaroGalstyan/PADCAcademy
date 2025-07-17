@@ -2,13 +2,13 @@ import React, { useState, useLayoutEffect } from "react";
 import { View, Text, ScrollView, TouchableOpacity } from "react-native";
 import { useRoute, useNavigation } from "@react-navigation/native";
 import { Ionicons } from "@expo/vector-icons";
-import { DirectionDetails } from "@/app/interfaces";
+import { IDirection } from "@/app/interfaces";
 
 const SubjectDetails = () => {
   const navigation = useNavigation();
   const route = useRoute();
   const { direction, studentFullName } = route.params as {
-    direction: DirectionDetails;
+    direction: IDirection;
     studentFullName: string;
   };
 
@@ -85,17 +85,17 @@ const SubjectDetails = () => {
             <View className="pl-4 mt-2 space-y-2">
               {ch.lectures.map((l, i) => (
                 <Text key={`l-${i}`} className="text-sm text-blue-600">
-                  📘 Lecture: {l.title}
+                  Lecture: {l.title}
                 </Text>
               ))}
               {ch.tasks.map((t, i) => (
                 <Text key={`t-${i}`} className="text-sm text-green-600">
-                  ✅ Task: {t.title}
+                  Task: {t.title}
                 </Text>
               ))}
               {ch.miniProjects.map((m, i) => (
                 <Text key={`m-${i}`} className="text-sm text-purple-600">
-                  🚀 Mini Project: {m.title}
+                  Mini Project: {m.title}
                 </Text>
               ))}
             </View>

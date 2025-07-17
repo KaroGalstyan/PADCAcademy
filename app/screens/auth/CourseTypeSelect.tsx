@@ -5,7 +5,7 @@ import useSignUpStore from "@/app/store/useSignUpStore";
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { RootStackParamList } from "@/app/navigation";
-import type { ICourseType } from "@/app/interfaces/";
+import type { CourseType } from "@/app/interfaces/";
 import { options } from "@/app/utils/auth";
 
 type CourseTypeSelectScreenNavigationProp = NativeStackNavigationProp<
@@ -17,7 +17,7 @@ const CourseTypeSelect = () => {
   const { setSignUpData } = useSignUpStore();
   const navigation = useNavigation<CourseTypeSelectScreenNavigationProp>();
 
-  const handleSelect = (type: ICourseType) => {
+  const handleSelect = (type: CourseType) => {
     setSignUpData({
       test: {
         courseType: type,
@@ -56,7 +56,7 @@ const CourseTypeSelect = () => {
             ))}
 
             <TouchableOpacity
-              onPress={() => handleSelect(option.key as ICourseType)}
+              onPress={() => handleSelect(option.key as CourseType)}
               className="rounded-xl overflow-hidden h-[45px] mt-4 mx-4 mb-[20px]"
             >
               <LinearGradient

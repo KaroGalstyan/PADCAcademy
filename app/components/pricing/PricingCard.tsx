@@ -2,9 +2,9 @@ import React from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
-import { PricingCardProps } from "@/app/interfaces";
+import { IPricingCardProps } from "@/app/interfaces";
 
-const PricingCard: React.FC<PricingCardProps> = ({ item, onPress }) => {
+const PricingCard: React.FC<IPricingCardProps> = ({ item, onPress }) => {
   return (
     <View
       className="h-[380px] rounded-[20px] px-[40px] pt-[30px] pb-[30px] self-center mb-8 w-full"

@@ -1,9 +1,9 @@
 import React from "react";
 import { View } from "react-native";
 import PricingCard from "./PricingCard";
-import { PricingListProps } from "@/app/interfaces";
+import { IPricingListProps } from "@/app/interfaces";
 
-const PricingList: React.FC<PricingListProps> = ({ priceList, onGetStarted }) => {
+const PricingList: React.FC<IPricingListProps> = ({ priceList, onGetStarted }) => {
   return (
     <View className="space-y-6 pb-[130px]">
       {priceList.map((item, index) => (

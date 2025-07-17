@@ -1,11 +1,11 @@
 import { create } from "zustand";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import Constants from "expo-constants";
-import { LanguageState } from "../interfaces";
+import { ILanguageState } from "../interfaces";
 
 const LANGUAGE_KEY = "appLanguage";
 
-const useLanguageStore = create<LanguageState>((set) => ({
+const useLanguageStore = create<ILanguageState>((set) => ({
   language: Constants.expoConfig?.extra?.defaultLocale || "en",
 
   setLanguage: async (lang) => {

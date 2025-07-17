@@ -15,7 +15,7 @@ const AuthGate = () => {
       const success = await useAuthStore.getState().restoreSession();
       navigation.reset({
         index: 0,
-        routes: [{ name: success ? "Home" : "Login" }],
+        routes: [{ name: success ? "Pricing" : "Login" }],
       });
     };
 

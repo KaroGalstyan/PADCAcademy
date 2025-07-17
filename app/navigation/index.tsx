@@ -11,7 +11,7 @@ import Pricing from "../screens/pricing/Pricing";
 import SubjectDetails from "../screens/students/SubjectDetails";
 import DrawerNavigator from "./DrawerNavigator";
 import LeftDrawerNavigator from "./LeftDrawerNavigator";
-import { Direction } from "../interfaces";
+import { IDirection } from "../interfaces";
 
 export type RootStackParamList = {
   AuthGate: undefined;
@@ -24,7 +24,7 @@ export type RootStackParamList = {
   Login: undefined;
   Pricing: undefined;
   Students: undefined;
-  SubjectDetails: { direction: Direction; studentFullName: string };
+  SubjectDetails: { direction: IDirection; studentFullName: string };
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();

@@ -11,7 +11,6 @@ import PaymentModal from "@/app/components/pricing/PaymentModal";
 import { priceList } from "@/app/utils/pricing";
 
 type PricingScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, "Pricing">;
-
 const Pricing = () => {
   const [modalVisible, setModalVisible] = useState(false);
   const { countries, loading, error } = useCountries();

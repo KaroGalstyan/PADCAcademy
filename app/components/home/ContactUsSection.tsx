@@ -5,19 +5,21 @@ import { ContactItem } from "@/app/interfaces";
 
 const ContactUsSection = () => {
   const handlePress = (item: ContactItem) => {
-    // if (item.title === 'Visit us' && item.location) bad condition.... Spes?
     switch (item.type) {
-      case "location":
+      case "location": {
         const url = `https://www.google.com/maps?q=${encodeURIComponent(item.location)}`;
         Linking.openURL(url);
         break;
-      case "phone":
-        const cleanedPhone = item.email.replace(/[^\d+]/g, "");
+      }
+      case "phone": {
+        const cleanedPhone = item.phone.replace(/[^\d+]/g, "");
         Linking.openURL(`tel:${cleanedPhone}`);
         break;
-      case "support":
+      }
+      case "support": {
         Linking.openURL(`mailto:${item.email}`);
         break;
+      }
     }
   };
 
@@ -37,7 +39,11 @@ const ContactUsSection = () => {
             onPress={() => handlePress(item)}
             className="border border-gray-300 rounded-full px-4 py-3 bg-white"
           >
-            <Text className="text-poppins text-black">{item.email}</Text>
+            <Text className="text-poppins text-black">
+              {item.type === "support" && item.email}
+              {item.type === "phone" && item.phone}
+              {item.type === "location" && item.location}
+            </Text>
           </TouchableOpacity>
         </View>
       ))}

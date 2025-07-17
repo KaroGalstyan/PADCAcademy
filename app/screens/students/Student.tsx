@@ -15,13 +15,13 @@ import api from "@/app/services/apiPrivate";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { RootStackParamList } from "@/app/navigation";
 import useStudentStore from "@/app/store/studentStore";
-import { Direction, DirectionWrapper, Student, Subject } from "@/app/interfaces";
+import { IDirection, IStudent, ISubject } from "@/app/interfaces";
 
 type StudentsScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, "Students">;
 
 const Students = () => {
   const navigation = useNavigation<StudentsScreenNavigationProp>();
-  const [student, setStudent] = useState<Student | null>(null);
+  const [student, setStudent] = useState<IStudent | null>(null);
   const [loading, setLoading] = useState(true);
   const { setStudent: setStudentStore } = useStudentStore();
 
@@ -36,7 +36,7 @@ const Students = () => {
       .finally(() => setLoading(false));
   }, [setStudentStore]);
 
-  const calculateProgress = (direction: Direction) => {
+  const calculateProgress = (direction: IDirection) => {
     const { completedTaskCount, totalTaskCount } = direction;
     if (!totalTaskCount) return 0;
     return Math.round((completedTaskCount / totalTaskCount) * 100);
@@ -80,9 +80,9 @@ const Students = () => {
         />
       </LinearGradient>
       <View className="px-5">
-        {student.directions.map((dirObj: DirectionWrapper, idx: number) => {
+        {student.directions.map((dirObj: { direction: IDirection }, idx: number) => {
           const dir = dirObj.direction;
-          const subject: Subject = dir.subjects[0];
+          const subject: ISubject = dir.subjects[0];
           const progress = calculateProgress(dir);
           const chapter = subject?.chapters?.[0];
           const filesCount =
