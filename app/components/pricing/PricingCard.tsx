@@ -4,7 +4,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
 import { IPricingCardProps } from "@/app/interfaces";
 
-const PricingCard: React.FC<IPricingCardProps> = ({ item, onPress }) => {
+const PricingCard: React.FC<IPricingCardProps> = ({ item, onPress, loading }) => {
   return (
     <View
       className="h-[380px] rounded-[20px] px-[40px] pt-[30px] pb-[30px] self-center mb-8 w-full"
@@ -63,6 +63,7 @@ const PricingCard: React.FC<IPricingCardProps> = ({ item, onPress }) => {
                 borderColor: "#A19FDB",
                 backgroundColor: "transparent",
               }}
+              disabled={loading}
             >
               <Text className="text-[#A19FDB] font-semibold">Get Started</Text>
             </TouchableOpacity>

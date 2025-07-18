@@ -1,35 +1,75 @@
-import React, { useState } from "react";
-import { ScrollView, View, Image } from "react-native";
-import { useNavigation } from "@react-navigation/native";
-import { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import { RootStackParamList } from "@/app/navigation";
-import useCountries from "@/app/hooks/useCountries";
-
+import React, { useCallback, useState } from "react";
+import { ScrollView, View, Image, Alert } from "react-native";
+import * as Linking from "expo-linking";
 import HeaderSection from "@/app/components/pricing/HeaderSection";
 import PricingList from "@/app/components/pricing/PricingList";
-import PaymentModal from "@/app/components/pricing/PaymentModal";
 import { priceList } from "@/app/utils/pricing";
+import { useStripe } from "@stripe/stripe-react-native";
 
-type PricingScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, "Pricing">;
+async function fetchPaymentSheetParams(amount: number): Promise<{
+  paymentIntent: string;
+  ephemeralKey: string;
+  customer: string;
+}> {
+  return fetch(`/api/payment-sheet`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ amount }),
+  }).then((res) => res.json());
+}
+
 const Pricing = () => {
-  const [modalVisible, setModalVisible] = useState(false);
-  const { countries, loading, error } = useCountries();
-  const [selectedCountry, setSelectedCountry] = useState<string>("");
-  const [cardNumber, setCardNumber] = useState("");
-  const [expiration, setExpiration] = useState("");
-  const [cvc, setCvc] = useState("");
-  const navigation = useNavigation<PricingScreenNavigationProp>();
+  const { initPaymentSheet, presentPaymentSheet } = useStripe();
+  const [loading, setLoading] = useState(false);
+  // const [currentPrice, setCurrentPrice] = useState<number | null>(null);
 
-  const formatCardNumber = (text: string) => {
-    const digits = text.replace(/\D/g, "").slice(0, 16);
-    const groups = digits.match(/.{1,4}/g);
-    return groups ? groups.join(" ") : "";
-  };
+  const initializePaymentSheet = useCallback(
+    async (amount: number) => {
+      const { paymentIntent, ephemeralKey, customer } = await fetchPaymentSheetParams(amount);
 
-  const formatExpiration = (text: string) => {
-    const digits = text.replace(/\D/g, "").slice(0, 4);
-    if (digits.length <= 2) return digits;
-    return `${digits.slice(0, 2)}/${digits.slice(2)}`;
+      const { error } = await initPaymentSheet({
+        merchantDisplayName: "Expo, Inc.",
+
+        customerId: customer,
+        customerEphemeralKeySecret: ephemeralKey,
+        paymentIntentClientSecret: paymentIntent,
+        allowsDelayedPaymentMethods: true,
+        defaultBillingDetails: {
+          name: "Jane Doe",
+          email: "jenny.rosen@example.com",
+          phone: "888-888-8888",
+        },
+        returnURL: Linking.createURL("stripe-redirect"),
+
+        applePay: {
+          merchantCountryCode: "US",
+        },
+      });
+
+      if (!error) {
+        setLoading(true);
+      } else {
+        setLoading(false);
+      }
+    },
+    [initPaymentSheet]
+  );
+
+  const onGetStarted = async (priceString: string) => {
+    const price = parseFloat(priceString);
+    // setCurrentPrice(price);
+    setLoading(false);
+    await initializePaymentSheet(price * 100);
+    const { error } = await presentPaymentSheet();
+    if (error) {
+      Alert.alert(`Ошибка: ${error.code}`, error.message);
+    } else {
+      Alert.alert("Успех", "Оплата прошла успешно!");
+      setLoading(false);
+      // setCurrentPrice(null);
+    }
   };
 
   return (
@@ -44,30 +84,8 @@ const Pricing = () => {
 
         <HeaderSection />
 
-        <PricingList priceList={priceList} onGetStarted={() => setModalVisible(true)} />
+        <PricingList priceList={priceList} onGetStarted={onGetStarted} loading={loading} />
       </ScrollView>
-
-      <PaymentModal
-        visible={modalVisible}
-        onClose={() => setModalVisible(false)}
-        countries={countries}
-        loading={loading}
-        error={error}
-        selectedCountry={selectedCountry}
-        setSelectedCountry={setSelectedCountry}
-        cardNumber={cardNumber}
-        setCardNumber={setCardNumber}
-        expiration={expiration}
-        setExpiration={setExpiration}
-        cvc={cvc}
-        setCvc={setCvc}
-        formatCardNumber={formatCardNumber}
-        formatExpiration={formatExpiration}
-        onConfirm={() => {
-          setModalVisible(false);
-          navigation.navigate("Students");
-        }}
-      />
     </>
   );
 };

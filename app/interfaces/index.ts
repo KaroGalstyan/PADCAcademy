@@ -82,20 +82,8 @@ export type ContactItem = IContactSupport | IContactPhone | IContactLocation;
 export interface IPaymentModalProps {
   visible: boolean;
   onClose: () => void;
-  countries: ICountry[];
-  loading: boolean;
-  error: string | null;
-  selectedCountry: string;
-  setSelectedCountry: (val: string) => void;
-  cardNumber: string;
-  setCardNumber: (val: string) => void;
-  expiration: string;
-  setExpiration: (val: string) => void;
-  cvc: string;
-  setCvc: (val: string) => void;
-  formatCardNumber: (text: string) => string;
-  formatExpiration: (text: string) => string;
-  onConfirm: () => void;
+  loading?: boolean;
+  error?: string | null;
 }
 
 export interface IPricingCard {
@@ -111,11 +99,13 @@ export interface IPricingCard {
 export interface IPricingCardProps {
   item: IPricingCard;
   onPress: () => void;
+  loading: boolean;
 }
 
 export interface IPricingListProps {
   priceList: IPricingCard[];
-  onGetStarted: () => void;
+  onGetStarted: (price: string) => void;
+  loading: boolean;
 }
 
 export interface ILanguageState {
