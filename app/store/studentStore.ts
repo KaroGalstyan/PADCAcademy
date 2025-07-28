@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import type { IStudentStore } from "../interfaces/student";
+import type { IStudentStore } from "../interfaces";
 
 const useStudentStore = create<IStudentStore>((set) => ({
   student: null,

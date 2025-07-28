@@ -14,6 +14,7 @@ import Courses from "../screens/courses/Courses";
 import HomeScreen from "../screens/home/HomeScreen";
 import Pricing from "../screens/pricing/Pricing";
 // import Students from "../screens/students/Student";
+// import Students from "../screens/students/Student";
 
 const Drawer = createDrawerNavigator();
 

@@ -1,7 +1,6 @@
 import AuthGate from "@/app/screens/auth/AuthGate";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import React from "react";
-import { IDirection } from "../interfaces";
 import About from "../screens/about/About";
 import CourseTypeSelect from "../screens/auth/CourseTypeSelect";
 import ExamScheduleSelect from "../screens/auth/ExamScheduleSelect";
@@ -9,6 +8,7 @@ import FinishSignUp from "../screens/auth/FinishSignUp";
 import SubjectDetails from "../screens/students/SubjectDetails";
 import DrawerNavigator from "./DrawerNavigator";
 import LeftDrawerNavigator from "./LeftDrawerNavigator";
+import { IDirection } from "../interfaces";
 
 export type RootStackParamList = {
   AuthGate: undefined;
