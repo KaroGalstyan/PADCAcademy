@@ -34,7 +34,6 @@ const ExamScheduleSelect = () => {
       },
     });
 
-    console.log("Selected datetime:", combinedDateTime.toISOString());
     navigation.navigate("FinishSignUp");
   };
 

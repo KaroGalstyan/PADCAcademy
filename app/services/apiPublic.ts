@@ -4,10 +4,10 @@ import useAuthStore from "@/app/store/authStore";
 const api = axios.create({ baseURL: process.env.EXPO_PUBLIC_API_URL });
 
 api.interceptors.request.use((config) => {
-  const token = useAuthStore.getState().accessToken;
+  const accessToken = useAuthStore.getState().accessToken;
 
-  if (token) {
-    config.headers.Authorization = `Bearer ${token}`;
+  if (accessToken) {
+    config.headers.Authorization = `Bearer ${accessToken}`;
   }
   return config;
 });

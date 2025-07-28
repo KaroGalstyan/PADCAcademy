@@ -3,8 +3,8 @@ import { createDrawerNavigator } from "@react-navigation/drawer";
 import { DrawerActions } from "@react-navigation/native";
 import React from "react";
 import { Image, TouchableOpacity } from "react-native";
-import About from "../screens/about/About";
 import CustomDrawerContent from "../components/CustomDrawerContent";
+import About from "../screens/about/About";
 import CourseTypeSelect from "../screens/auth/CourseTypeSelect";
 import ExamScheduleSelect from "../screens/auth/ExamScheduleSelect";
 import FinishSignUp from "../screens/auth/FinishSignUp";
@@ -62,7 +62,7 @@ export default function DrawerNavigator() {
       />
       <Drawer.Screen name="FinishSignUp" component={FinishSignUp} options={{ headerShown: true }} />
       <Drawer.Screen name="Login" component={Login} options={{ headerShown: true }} />
-      <Drawer.Screen name="Pricing" component={Pricing} options={{ headerShown: false }} />
+      <Drawer.Screen name="Pricing" component={Pricing} options={{ headerShown: true }} />
       {/* <Drawer.Screen name="Students" component={Students} options={{ headerShown: false }} /> */}
     </Drawer.Navigator>
   );

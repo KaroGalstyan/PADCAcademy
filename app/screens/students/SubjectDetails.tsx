@@ -83,17 +83,17 @@ const SubjectDetails = () => {
 
           {expanded === idx && (
             <View className="pl-4 mt-2 space-y-2">
-              {ch.lectures.map((l, i) => (
+              {ch.lectures?.map((l, i) => (
                 <Text key={`l-${i}`} className="text-sm text-blue-600">
                   Lecture: {l.title}
                 </Text>
               ))}
-              {ch.tasks.map((t, i) => (
+              {ch.tasks?.map((t, i) => (
                 <Text key={`t-${i}`} className="text-sm text-green-600">
                   Task: {t.title}
                 </Text>
               ))}
-              {ch.miniProjects.map((m, i) => (
+              {ch.miniProjects?.map((m, i) => (
                 <Text key={`m-${i}`} className="text-sm text-purple-600">
                   Mini Project: {m.title}
                 </Text>

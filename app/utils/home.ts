@@ -15,7 +15,6 @@ export const contactUs: ContactItem[] = [
     icon: require("../../assets/images/visit-us.png"),
     title: "Visit us",
     description: "Visit our office.",
-    email: "View on Google Maps",
     location: "40.7989655,43.8431837",
   },
   {
@@ -24,7 +23,7 @@ export const contactUs: ContactItem[] = [
     icon: require("../../assets/images/call-us.png"),
     title: "Call us",
     description: "Mon-Fri from 10:30am to 6:30pm.",
-    email: "+(374)94-019-941",
+    phone: "+(374)94-019-941",
   },
 ];
 

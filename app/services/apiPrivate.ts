@@ -1,16 +1,13 @@
 import axios from "axios";
+import useAuthStore from "@/app/store/authStore";
 
 const apiPrivate = axios.create({
   baseURL: process.env.EXPO_PUBLIC_API_URL,
 });
 
-let accessToken: string | null = null;
-
-export const setAccessTokenPrivate = (token: string | null) => {
-  accessToken = token;
-};
-
 apiPrivate.interceptors.request.use((config) => {
+  const accessToken = useAuthStore.getState().accessToken;
+
   if (accessToken) {
     config.headers.Authorization = `Bearer ${accessToken}`;
   }

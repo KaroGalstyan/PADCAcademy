@@ -1,7 +1,6 @@
-import { create } from "zustand";
-import * as SecureStore from "expo-secure-store";
 import refreshAccessToken from "@/app/services/authService";
-import { setAccessTokenPrivate } from "@/app/services/apiPrivate";
+import * as SecureStore from "expo-secure-store";
+import { create } from "zustand";
 
 interface AuthState {
   accessToken: string | null;
@@ -19,7 +18,6 @@ const useAuthStore = create<AuthState>((set) => ({
 
   setTokens: async (accessToken, refreshToken, rememberMe) => {
     set({ accessToken, refreshToken, rememberMe });
-    setAccessTokenPrivate(accessToken);
 
     if (rememberMe) {
       await SecureStore.setItemAsync("accessToken", accessToken);
@@ -42,7 +40,6 @@ const useAuthStore = create<AuthState>((set) => ({
         await refreshAccessToken(storedRefreshToken);
 
       set({ accessToken, refreshToken: newRefreshToken, rememberMe: true });
-      setAccessTokenPrivate(accessToken);
       await SecureStore.setItemAsync("accessToken", accessToken);
       await SecureStore.setItemAsync("refreshToken", newRefreshToken);
 

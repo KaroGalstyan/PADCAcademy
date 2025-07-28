@@ -1,24 +1,23 @@
-import React, { useState } from "react";
-import {
-  View,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  Image,
-  KeyboardAvoidingView,
-  Platform,
-  ScrollView,
-  SafeAreaView,
-} from "react-native";
-import { LinearGradient } from "expo-linear-gradient";
-import { useNavigation } from "@react-navigation/native";
-import { Ionicons } from "@expo/vector-icons";
-import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { RootStackParamList } from "@/app/navigation";
 import api from "@/app/services/apiPublic";
 import useAuthStore from "@/app/store/authStore";
+import { Ionicons } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { AxiosError } from "axios";
-import { setAccessTokenPrivate } from "@/app/services/apiPrivate";
+import { LinearGradient } from "expo-linear-gradient";
+import React, { useState } from "react";
+import {
+  Image,
+  KeyboardAvoidingView,
+  Platform,
+  SafeAreaView,
+  ScrollView,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from "react-native";
 
 type LoginScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, "Login">;
 
@@ -35,9 +34,7 @@ const Login = () => {
         password: password,
       });
 
-      console.log("Login success:", res.data);
       const { accessToken, refreshToken } = res.data;
-      setAccessTokenPrivate(accessToken);
       await useAuthStore.getState().setTokens(accessToken, refreshToken, rememberMe);
       navigation.reset({
         index: 0,
@@ -104,7 +101,7 @@ const Login = () => {
             >
               <View
                 className={`w-[18px] h-[18px] border-2 rounded-md mr-2 justify-center items-center
-								${rememberMe ? "bg-[#A19FDB] border-[#A19FDB]" : "border-[#A19FDB]"}`}
+                ${rememberMe ? "bg-[#A19FDB] border-[#A19FDB]" : "border-[#A19FDB]"}`}
               >
                 {rememberMe && <Ionicons name="checkmark" size={14} color="#fff" />}
               </View>
