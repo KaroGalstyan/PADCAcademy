@@ -85,7 +85,6 @@ const Pricing = () => {
         <HeaderSection />
 
         <PricingList priceList={priceList} onGetStarted={onGetStarted} loading={loading} />
-        <PricingList priceList={priceList} onGetStarted={onGetStarted} loading={loading} />
       </ScrollView>
     </>
   );
